@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+
+        function f() {
+        let n =Math.floor(Math.random()*249);
+            fetch("https://restcountries.eu/rest/v2/all?fields=name")
+                .then(res1 => { return res1.json(); })
+                .then(res2=>{
+                    fetch(`https://restcountries.eu/rest/v2/name/${res2[n].name}`)
+                        .then(res3=>{return res3.json();})
+                        .then(res4=>{ document.getElementById("t").innerText=JSON.stringify(res4);})}) 
+                        //אני לא יודעת איך לסדר את זה בצורה יפה לעין- שורה מתחת שורה
+        }
+    </script>
+</head>
+
+<body>
+    
+    <button onclick="f()">click me please</button>
+    <p id="t"></p>
+</body>
+
+</html>
