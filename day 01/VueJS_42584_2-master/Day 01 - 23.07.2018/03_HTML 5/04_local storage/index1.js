@@ -38,6 +38,8 @@ function initAllUser() {
     document.getElementById("userList").innerHTML = userList;
     //----------------------------------------------------------
 
+    f();
+
 }
 
 
@@ -65,6 +67,11 @@ function loginUser() {
         //add the new user to the session storage - as the current loged in user
         sessionStorage.setItem("currentUser", JSON.stringify(newUser));
         //----------------------------------------------------------
+
+
+        localStorage.setItem("lastUser", JSON.stringify(newUser));
+
+
 
 
         //----------------------------------------------------------
@@ -107,6 +114,22 @@ function loginUser() {
         alert("please enter all the requiered fields")
     }
    
+}
+function f()
+{
+    let prevUser=localStorage.getItem("lastUser");
+    if(prevUser!=null)
+    {
+        prevUser= JSON.parse(prevUser);
+        document.getElementById("userName").innerText =prevUser.fullName;
+    }
+    else
+    {
+        prevUser = [];
+        document.getElementById("userName").innerText ="user";
+    }
+   
+    
 }
 
 
