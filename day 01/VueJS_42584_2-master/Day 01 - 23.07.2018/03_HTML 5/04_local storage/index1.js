@@ -44,7 +44,6 @@ function initAllUser() {
 
 
 
-
 function loginUser() {
     let fullNameVal=document.getElementById("fullName");
     let ageVal=document.getElementById("age");
@@ -69,16 +68,7 @@ function loginUser() {
         //----------------------------------------------------------
 
 
-<<<<<<< HEAD
         localStorage.setItem("lastUser", JSON.stringify(newUser));
-
-
-
-
-=======
-       
-     
->>>>>>> 86c92fed7a47f0aee1f726dc3bf6db698a222300
         //----------------------------------------------------------
         //add the new user to the local storage 
 
@@ -122,6 +112,7 @@ function loginUser() {
 }
 function f()
 {
+    
     let prevUser=localStorage.getItem("lastUser");
     if(prevUser!=null)
     {
