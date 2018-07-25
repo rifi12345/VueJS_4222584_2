@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Tasks</title>
+</head>
+
+
+<body>
+    <header id="h">
+        <a :href="linkBack">{{ back }}</a>
+    </header>
+    <ul id="taskList"></ul>
+
+    <script>
+        new Vue({
+            el: "#h",
+            data: {
+                back: "back to home",
+                    linkBack: '00_Home.html'
+            }
+        });
+
+
+        let allTasks = localStorage.getItem("allTasks");
+        allTasks = (allTasks) ? JSON.parse(allTasks) : [];
+        let taskList = "";
+        for (let item of allTasks) {
+            taskList +=
+                `<li><h4>Date & Time: </h4> ${item.dateTime}</li>
+            <li><h4>Content: </h4> ${item.content}</li><\hr><\hr>`;
+        }
+
+        document.getElementById("taskList").innerHTML = taskList;
+
+    </script>
+
+</body>
+
+</html>

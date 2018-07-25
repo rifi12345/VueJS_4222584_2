@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Add</title>
+</head>
+
+<body>
+    <form id="f">
+        <label>Date & Time: </label>
+        <input type="datetime-local" id="dt">
+        <br><br>
+        <label>Content: </label>
+        <input type="text" id="cont">
+        <br><br>
+        <button @click="saveTask">{{ save }}</button>
+        <br><br>
+        <a :href="linkBack">{{ back }}</a>
+    </form>
+    <script>
+      new Vue
+            ({
+                el: '#f',
+                data:
+                {
+                    save: "SAVE",
+                    back: "back to home",
+                    linkBack: '00_Home.html'
+                },
+                methods:
+                {
+                    saveTask: function (){
+                        let task =
+                        {
+                            dateTime: document.getElementById("dt").value,
+                            content: document.getElementById("cont").value
+                        };
+                        let prevTasks = localStorage.getItem("allTasks");
+                        prevTasks = (prevTasks) ? JSON.parse(prevTasks) : [];
+                        prevTasks.push(task);
+                        localStorage.setItem("allTasks", JSON.stringify(prevTasks));
+                    }
+                }
+            });
+    </script>
+</body>
+
+</html>
